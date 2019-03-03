@@ -1,3 +1,5 @@
+# pandoc-gls
+
 This filter provides a slightly cleaner syntax for the LaTeX 
 [glossaries package](https://www.ctan.org/pkg/glossaries). This uses a syntax inspired by
 [pandoc-ac](https://github.com/Enet4/pandoc-ac) by Eduardo Pinho.

@@ -1,22 +1,29 @@
-Str = function(el)
+function replace(front_p, ac, back_p, command) 
+
+        new_str = string.format("%s\\%s{%s}%s", front_p, command, ac, back_p)
+
+        return new_str
+end
+
+function Str(el)
     
     front_p, capital, plural, ac, back_p = el.text:match("(%p*)%((%++)(%^-)(%a+)%)(%p*)")
 
     if ac then 
         if plural == "^" then
             if capital == "++" then
-                new_str = string.format("%s\\Glspl{%s}%s", front_p, ac, back_p)
+                command = "Glspl"
             else
-                new_str = string.format("%s\\glspl{%s}%s", front_p, ac, back_p)
+                command = "glspl"
             end
         else
             if capital == "++" then
-                new_str = string.format("%s\\Gls{%s}%s", front_p, ac, back_p)
+                command = "Gls"
             else
-                new_str = string.format("%s\\gls{%s}%s", front_p, ac, back_p)
+                command = "gls"
             end
         end
-        return pandoc.RawInline("tex", new_str)
+        return pandoc.RawInline("tex", replace(front_p, ac, back_p, command))
     end
 end
 
