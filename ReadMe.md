@@ -39,6 +39,10 @@ include-after:
 This will include a glossary at the end of the document, however you can place it at the
 front by putting the print glossary command in the `include-before` list.
 
+__NOTE:__ Glossary labels cannot contain spaces but can contain "\_" (underscore) and "-"
+(hyphen) characters. Any other punctuation characters used within labels will cause the
+parsing to fail.
+
 ## To-Do
 
 Lua is not my main language so this filter could probably be made more efficient. Any tips
