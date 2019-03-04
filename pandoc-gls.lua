@@ -7,7 +7,7 @@ end
 
 function Str(el)
     
-    front_p, capital, plural, ac, back_p = el.text:match("(%p*)%((%++)(%^-)(%a+)%)(%p*)")
+    front_p, capital, plural, ac, back_p = el.text:match("(%p*)%((%++)(%^-)(%a+%p*%a*)%)(%p*)")
 
     if ac then 
         if plural == "^" then

@@ -5,10 +5,14 @@ date: 02/03/2019
 header-includes:
     - \usepackage{glossaries}
     - \makenoidxglossaries
-    - \include{glossary}
+    - \input{glossary}
 include-after:
     - \printnoidxglossary[sort=word]
 ---
+
+## Introduction
+
+Welcome to the (+pandoc-gls) test source code document.
 
 ## Section heading
 
