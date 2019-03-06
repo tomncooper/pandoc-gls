@@ -13,7 +13,7 @@ include-after:
 ## Introduction
 
 Welcome to the (+pandoc-gls) test source code document. I really don't want this ->
-(-pandoc-gls) to be linked to the glossary!
+((-pandoc-gls)) or this (-+^FOO)  to be linked to the glossary!
 
 ## Section heading
 
