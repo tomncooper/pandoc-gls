@@ -22,9 +22,9 @@ will prevent the acronyms and glossary first usages turning up in your tables of
 figures/tables and/or messing up your PDF bookmarks.
 
 If you are using the `hyperref` package to have links from your TOC to your sections then
-avoid using the anything other than `(-x)` in your section headings as all manor of errors
-await you. See the details about expandable vs non-expandable commands in the [glossaries
-user
+avoid using the anything other than `(-x)` or `(-^x)` in your section headings as all
+manor of errors await you. See the details about expandable vs non-expandable commands in
+section 9 of the [glossaries user
 guide](http://mirror.ox.ac.uk/sites/ctan.org/macros/latex/contrib/glossaries/glossaries-user.pdf).
 
 ## Usage
