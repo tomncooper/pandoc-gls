@@ -4,15 +4,22 @@ This filter provides a slightly cleaner syntax for the LaTeX
 [glossaries package](https://www.ctan.org/pkg/glossaries). This uses a syntax inspired by
 [pandoc-ac](https://github.com/Enet4/pandoc-ac) by Eduardo Pinho.
 
-What it does:
+Use the codes below in place of the `\gls{label}` form in your source code:
 
-| Code     | Description                                   | Translates to |
-|----------|-----------------------------------------------|---------------|
-| `(+x)`   | glossary entry                                | `\gls{x}`     |
-| `(++x)`  | capitalised glossary entry                    | `\Gls{x}`     |
-| `(+^x)`  | plural form of the glossary entry             | `\glspl{x}`   |
-| `(++^x)` | capitalised plural form of the glossary entry | `\Glspl{x}`   |
+| Code   | Description                                             | Translates to        |
+|--------|---------------------------------------------------------|----------------------|
+|`(+x)`  | glossary entry                                          | `\gls{x}`            |
+|`(++x)` | capitalised glossary entry                              | `\Gls{x}`            |
+|`(+^x)` | plural form of the glossary entry                       | `\glspl{x}`          |
+|`(++^x)`| capitalised plural form of the glossary entry           | `\Glspl{x}`          |
+|`(-x)`  | unlinked glossary entry name only                       | `\glsentryname{x}`   |
+|`(-+x)` | caplitalised unlinked glossary entry                    | `\Glsentryname{x}`   |
+|`(-^x)` | plutal unlinked glossary entry                          | `\glsentryplural{x}` |
+|`(-+^x)`| caplitalised plural form of the unlinked glossary entry | `\Glsentryplural{x}` |
 
+The unlinked versions of the syntax are recommended for section headings and figure/table
+captions as this will prevent the acronyms and glossary first usages turning up in your
+tables of contents and/or messing up your PDF bookmarks.
 
 ## Usage
 

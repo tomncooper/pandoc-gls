@@ -8,21 +8,35 @@ end
 function Str(el)
     
     front_p, capital, plural, ac, back_p = el.text:match(
-        "(%p*)%((%++)(%^-)(%a+[_%-]*%a*)%)(%p*)"
+        "(%p*)%(([%+%-]+)(%^-)(%a+[_%-]*%a*)%)(%p*)"
     )
 
     if ac then 
         if plural == "^" then
             if capital == "++" then
                 command = "Glspl"
-            else
+            elseif capital == "+" then
                 command = "glspl"
+            elseif capital == "-+" then
+                command = "Glsentryplural"
+            elseif capital == "-" then
+                command = "glsentryplural"
+            else 
+                -- Unknown command string so just return the element unchanged
+                return el
             end
         else
             if capital == "++" then
                 command = "Gls"
-            else
+            elseif capital == "+" then
                 command = "gls"
+            elseif capital == "-+" then
+                command = "Glsentryname"
+            elseif capital == "-" then
+                command = "glsentryname"
+            else 
+                -- Unknown command string so just return the element unchanged
+                return el
             end
         end
         return pandoc.RawInline("tex", replace(front_p, ac, back_p, command))
