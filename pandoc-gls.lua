@@ -8,7 +8,7 @@ end
 function Str(el)
     
     front_p, capital, plural, ac, back_p = el.text:match(
-        "(%p*)%(([%+%-]+)(%^-)(%a+[_%-]*%a*)%)(%p*)"
+        "(%g*)%(([%+%-]+)(%^-)(%a+[_%-]*%a*)%)(%g*)"
     )
 
     if ac then 

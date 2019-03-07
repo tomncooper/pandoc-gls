@@ -12,19 +12,27 @@ include-after:
 
 ## Introduction
 
-Welcome to the (+pandoc-gls) test source code document. I really don't want this ->
-((-pandoc-gls)) or this (-+^FOO)  to be linked to the glossary!
+Welcome to (+pandoc-gls)'s test source code document. But I really don't want this ->
+(-pandoc-gls) or this (-+^FOO) to be linked to the glossary!
 
 ## Section heading
 
-Some text in here with some acronyms: You have to watch out for those (+^BAR), they are
-(+^FOO) (although (+BAZ) disagrees). (++^FOO) should not be trusted!
+You have to watch out for those (+^BAR), they are (+^FOO) (although (+BAZ) disagrees).
+(++^FOO) should not be trusted!
 
 ## Another section heading
  
 Some other text with _emphasised_ glossary terms _(+FOO)_ __(+BAZ)__
 
-## A heading with an acronym in: (+BAR)
+We also need to make sure the surrounding punctuation and characters are not ignored:
+
+- ((+FOO)).
+- ((++BAZ)),
+- ((+^BAR))!?!?!?!
+- (+pandoc-gls)ing
+
+
+## A heading with an acronym in: (-BAR)
 
 Some inline code `code ac (+^BAZ)`.
 
