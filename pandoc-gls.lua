@@ -1,14 +1,20 @@
-function replace(front_p, ac, back_p, command) 
+function replace(front, ac, back, command) 
 
-        new_str = string.format("%s\\%s{%s}%s", front_p, command, ac, back_p)
+    apostrophe, rest = string.match(back, "(%'*)(%g+)")
 
-        return new_str
+    if apostrophe == "'" then
+        back = string.format("\\textquotesingle %s", rest)
+    end
+
+    new_str = string.format("%s\\%s{%s}%s", front, command, ac, back)
+
+    return new_str
 end
 
 function Str(el)
     
-    front_p, capital, plural, ac, back_p = el.text:match(
-        "(%p*)%(([%+%-]+)(%^-)(%a+[_%-]*%a*)%)(%p*)"
+    front, capital, plural, ac, back = el.text:match(
+        "(%p*)%(([%+%-]+)(%^-)(%a+[_%-]*%a*)%)(%g*)"
     )
 
     if ac then 
@@ -39,7 +45,7 @@ function Str(el)
                 return el
             end
         end
-        return pandoc.RawInline("tex", replace(front_p, ac, back_p, command))
+        return pandoc.RawInline("tex", replace(front, ac, back, command))
     end
 end
 
