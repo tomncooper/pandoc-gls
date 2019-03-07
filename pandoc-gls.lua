@@ -1,17 +1,17 @@
-function replace(front_p, ac, back_p, command) 
+function replace(front, ac, back, command) 
 
-        new_str = string.format("%s\\%s{%s}%s", front_p, command, ac, back_p)
+    new_str = string.format("%s\\%s{%s}%s", front, command, ac, back)
 
-        return new_str
+    return new_str
 end
 
 function Str(el)
     
-    front_p, capital, plural, ac, back_p = el.text:match(
-        "(%g*)%(([%+%-]+)(%^-)(%a+[_%-]*%a*)%)(%g*)"
+    front, capital, plural, ac, apostrophe, back = el.text:match(
+        "(%g*)%(([%+%-]+)(%^-)(%a+[_%-]*%a*)%)([%\u{0027}%\u{2019}]*)(%g*)"
     )
 
-    if ac then 
+    if ac ~= "" then 
         if plural == "^" then
             if capital == "++" then
                 command = "Glspl"
@@ -39,7 +39,16 @@ function Str(el)
                 return el
             end
         end
-        return pandoc.RawInline("tex", replace(front_p, ac, back_p, command))
+
+        if apostrophe == "\u{0027}" or apostrophe == "\u{2019}" then
+            if back ~= "" then 
+                back = string.format("\\textquotesingle %s", back)
+            else
+                back = "\\textquotesingle\\space"
+            end
+        end
+
+        return pandoc.RawInline("tex", replace(front, ac, back, command))
     end
 end
 
