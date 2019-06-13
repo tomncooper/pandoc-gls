@@ -8,7 +8,7 @@ end
 function Str(el)
     
     front, capital, plural, ac, apostrophe, back = el.text:match(
-        "(%g*)%(([%+%-]+)(%^-)(%a+[_%-]*%a*)%)([%\u{0027}%\u{2019}]*)(%g*)"
+        "(%g*)%(([%+%-]+)(%^-)(%w+[_%-]*%w*)%)([%\u{0027}%\u{2019}]*)(%g*)"
     )
 
     if ac ~= "" then 
