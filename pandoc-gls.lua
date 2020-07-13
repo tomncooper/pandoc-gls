@@ -42,7 +42,7 @@ function Str(el)
 
         if apostrophe == "\u{0027}" or apostrophe == "\u{2019}" then
             if back ~= "" then 
-                back = string.format("\\textquotesingle %s", back)
+                back = string.format("'%s", back)
             else
                 back = "\\textquotesingle\\space"
             end
