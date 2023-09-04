@@ -1,0 +1,23 @@
+%% Reference this with --include-in-header or "include-in-header:"
+%% inside of a defaults.yaml/config.yaml to reset the glossary abbrevations
+%% for each chapter. This is especially useful in longer documents.
+
+% include the glossary basics
+\usepackage[
+  toc,
+  abbreviations,
+  shortcuts=abbr,
+]{glossaries-extra}
+% set some options
+\setabbreviationstyle[acronym]{long-short-desc}
+% make the glossaries
+\makenoidxglossaries
+\include{glossary}
+% reset glossary first-use expansion for each chapter
+% credit: https://tex.stackexchange.com/a/646616/155094
+\NewCommandCopy{\latexchapter}{\chapter}
+\RenewDocumentCommand{\chapter}{sO{#3}m}{%
+  \IfBooleanTF{#1}{\latexchapter*{#3}}{\latexchapter[#2]{#3}}%
+}
+\AddToHook{cmd/chapter/after}{\glsresetall}
+\GlsXtrEnableEntryUnitCounting{abbreviation}{1}{chapter}

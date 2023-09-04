@@ -35,16 +35,21 @@ to the substituted latex output. For example `(+FOO)'s` would become `foobanator
 
 ## Usage
 
-To apply this filter to your markdown code, clone the `pandoc-gls.lua` to an accessible
+First, create a glossary file. See `glossary.tex` in this repository for an example.
+
+__NOTE:__ Glossary labels cannot contain spaces but can contain "\_" (underscore) and "-"
+(hyphen) characters. Any other punctuation characters used within labels will cause the
+parsing to fail.
+
+Then, to apply this filter to your markdown code, clone the `pandoc-gls.lua` to an accessible
 directory, then run pandoc with the `--lua-filters` option:
 
 ``` 
 $ pandoc --from markdown --to latex -o output.pdf --lua-filter \path\to\pandoc-gls.lua input.md
 ```
 
-In order for the glossary entries to render properly you need to include the glossaries
-package and a definition file (see `glossary.tex` in this repository for an example) in
-the markdown document's front matter:
+For the glossary entries to render properly, you need to include the glossaries
+package and a definition file in the Markdown document's front matter:
 
 ``` 
 header-includes:
@@ -55,12 +60,19 @@ include-after:
     - \printnoidxglossary[sort=word]
 ```
 
-This will include a glossary at the end of the document, however you can place it at the
+This will include a glossary at the end of the document, however, you can place it at the
 front by putting the print glossary command in the `include-before` list.
 
-__NOTE:__ Glossary labels cannot contain spaces but can contain "\_" (underscore) and "-"
-(hyphen) characters. Any other punctuation characters used within labels will cause the
-parsing to fail.
+Alternatively, use the content of `include-in-header__reset-each-chapter.tex` passed to
+`--include-in-header` when executing pandoc or in `--defaults config.yaml`:
+
+```yaml
+include-in-header:
+- '.filters/pandoc-gls/include-in-header__reset-each-chapter.tex'
+```
+
+As the name implies, this will also reset the abbreviations for each chapter.
+Remove the lower part of the file to disable that functionality.
 
 ## To-Do
 
