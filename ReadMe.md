@@ -12,10 +12,10 @@ Use the codes below in place of the `\gls{label}` form in your source code:
 |`(++x)` | capitalised glossary entry                              | `\Gls{x}`            |
 |`(+^x)` | plural form of the glossary entry                       | `\glspl{x}`          |
 |`(++^x)`| capitalised plural form of the glossary entry           | `\Glspl{x}`          |
-|`(-x)`  | unlinked glossary entry name only                       | `\glsentryname{x}`   |
-|`(-+x)` | capitalised unlinked glossary entry                    | `\Glsentryname{x}`   |
+|`(-x)`  | unlinked glossary entry name only                       | `\glsentrytext{x}`   |
+|`(-+x)` | capitalised unlinked glossary entry                     | `\Glsentrytext{x}`   |
 |`(-^x)` | plural unlinked glossary entry                          | `\glsentryplural{x}` |
-|`(-+^x)`| capitalised plural form of the unlinked glossary entry | `\Glsentryplural{x}` |
+|`(-+^x)`| capitalised plural form of the unlinked glossary entry  | `\Glsentryplural{x}` |
 
 The unlinked versions of the syntax are recommended for figure and table captions as this
 will prevent the acronyms and glossary first usages turning up in your tables of

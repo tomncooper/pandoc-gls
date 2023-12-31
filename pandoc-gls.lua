@@ -31,9 +31,9 @@ function Str(el)
             elseif capital == "+" then
                 command = "gls"
             elseif capital == "-+" then
-                command = "Glsentryname"
+                command = "Glsentrytext"
             elseif capital == "-" then
-                command = "glsentryname"
+                command = "glsentrytext"
             else 
                 -- Unknown command string so just return the element unchanged
                 return el
