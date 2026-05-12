@@ -62,6 +62,24 @@ __NOTE:__ Glossary labels cannot contain spaces but can contain "\_" (underscore
 (hyphen) characters. Any other punctuation characters used within labels will cause the
 parsing to fail.
 
+## Testing
+
+The repository includes a smoke test suite that verifies all syntax variants against known-good output using pandoc.
+
+Requirements: pandoc and `make` (no additional tooling needed).
+
+```sh
+make test
+```
+
+To regenerate the expected output after an intentional change to the filter (e.g. a new pandoc version changes formatting):
+
+```sh
+make update-golden
+```
+
+Test inputs live in `tests/*.md` and expected outputs in `tests/golden/*.tex`. Each test runs a markdown snippet through pandoc with the filter and diffs against the golden file.
+
 ## To-Do
 
 Lua is not my main language so this filter could probably be made more efficient. Any tips
